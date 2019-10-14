@@ -1,37 +1,41 @@
 <ion-content>
-    <ion-content color="primary" padding>
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-          <ion-grid>
-            <ion-row color="primary" justify-content-center>
-              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-                  <div style = "font-size: 3em;" text-center>
-                      <b>
-                        FINIXER.
-                      </b>
+
+  <ion-content color="primary" padding>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+              <h1>FINIXER.</h1>
+              <h3>Accede</h3>
+            </div>
+            <div padding>
+              <ion-item>
+                <ion-input formControlName="correo" type="email" placeholder="Correo" ngModel required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input formControlName="contrasena" type="password" placeholder="Contraseña" ngModel required></ion-input>
+              </ion-item>
+            </div>
+            <div class="centrado">
+             <div class="divButton">
+              <ion-button shape="round" size="large" type="submit" [disabled]="loginForm.invalid">Entrar</ion-button>
+            </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-item text-center>
+                <ion-label>
+                    <div class="registroText">
+                        Si no tienes una cuenta,<br>
+                        <a routerLink='/registrar'>registrate aquí</a>
                     </div>
-                <div style = "padding-top: 15%;" text-center>
-                  <h3>Accede</h3>
-                </div>
-                <div padding>
-                  <ion-item>
-                    <ion-input formControlName="correo" type="email" placeholder="Correo" ngModel required></ion-input>
-                  </ion-item>
-                  <ion-item>
-                    <ion-input formControlName="contrasena" type="password" placeholder="Contraseña" ngModel required></ion-input>
-                  </ion-item>
-                </div>
-                <div padding>
-                  <ion-button shape="round" size="large" type="submit" [disabled]="loginForm.invalid">Entrar</ion-button>
-                </div>
-              </ion-col>
-              <ion-row>
-                  <div text-center>
-                Si no tienes una cuenta <a routerLink='/registrar'>
-                  registrate aqui</a>
-                  </div>
-              </ion-row>
-            </ion-row>
-          </ion-grid>
-        </form>
-      </ion-content>
+                </ion-label>
+            </ion-item>       
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content>
+
 </ion-content>
