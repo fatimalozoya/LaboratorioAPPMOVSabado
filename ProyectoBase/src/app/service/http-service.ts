@@ -6,7 +6,7 @@ export abstract class HttpService<T> {
 
   endPoint: string;
 
-  constructor(protected http: HttpClient, private urlEndpoint: string){
+  constructor(protected http: HttpClient, private urlEndpoint: string) {
     this.endPoint = environment.apiUrl + urlEndpoint;
   }
 
@@ -21,7 +21,7 @@ export abstract class HttpService<T> {
   }
 
   protected save(object: T): Observable<T> {
-    let headers = new HttpHeaders({
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*' });
     const options = { headers };
@@ -31,7 +31,7 @@ export abstract class HttpService<T> {
     return this.http.put<T>(`${this.endPoint}` + '/' + `${id}`, object);
   }
 
-  protected delete(id: number):  Observable<T> {
+  protected delete(id: number): Observable<T> {
     return this.http.delete<T>(`${this.endPoint}` + '/' + `${id}`);
   }
 
