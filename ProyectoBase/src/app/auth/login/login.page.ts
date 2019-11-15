@@ -6,6 +6,7 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { LoginService } from './loginService';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -21,58 +22,59 @@ export class LoginPage implements OnInit {
               private router: Router) {
 
               this.loginForm = this.formBuilder.group({
-                correo: ['', [Validators.required, Validators.email]],
-                contrasena: ['', [Validators.required, Validators.minLength(6)]]
-                });
-  }
+              correo: ['', [Validators.required, Validators.email]],
+              contrasena: ['', [Validators.required, Validators.minLength(6)]]
+              });
+}
 
   ngOnInit() {
   }
 
   login() {
-      console.log(this.loginForm.valid);
-      this.usuario = new Usuario();
-      this.usuario.correo = this.loginForm.controls.correo.value;
-      this.usuario.contrasena = this.loginForm.controls.contrasena.value;
-      this.loginService.Login(this.usuario).subscribe(
-        value => {
-          this.loginCorrecto();
-        },
-        error => {
-          this.error(error.error.mensaje);
-        }
-      );
-  }
+    console.log(this.loginForm.valid);
+    this.usuario = new Usuario();
+    this.usuario.correo = this.loginForm.controls.correo.value;
+    this.usuario.contrasena = this.loginForm.controls.contrasena.value;
+    this.loginService.Login(this.usuario).subscribe(
+      value => {
+        this.loginCorrecto();
+      },
+      error => {
+        this.error(error.error.mensaje);
+      }
+    );
+}
 
-  async loginCorrecto() {
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Finixer',
-      message: 'Bienvenido a Finixer',
-      buttons: [{
-        text: 'Aceptar',
-        handler: () => {
-          this.router.navigateByUrl('/home');
-        }
-      }]
-    });
+async loginCorrecto() {
+  const alert = await this.alertController.create({
+    header: 'Alert',
+    subHeader: 'Finixer',
+    message: 'Bienvenido a Finixer',
+    buttons: [{
+      text: 'Aceptar',
+      handler: () => {
+        this.router.navigateByUrl('/tabs/cuenta');
+      }
+    }]
+  });
 
-    await alert.present();
-  }
+  await alert.present();
+}
 
-  async error(error: string) {
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Error',
-      message: error,
-      buttons: [{
-        text: 'Aceptar',
-        handler: () => {
-          this.loginForm.controls.correo.setErrors(Validators.email);
-        }
-      }]
-    });
+async error(error: string) {
+  const alert = await this.alertController.create({
+    header: 'Alert',
+    subHeader: 'Error',
+    message: error,
+    buttons: [{
+      text: 'Aceptar',
+      handler: () => {
+        this.loginForm.controls.correo.setErrors(Validators.email);
+      }
+    }]
+  });
 
-    await alert.present();
-  }
+  await alert.present();
+}
+
 }
