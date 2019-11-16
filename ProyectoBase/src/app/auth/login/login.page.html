@@ -6,8 +6,9 @@
         <ion-row color="primary" justify-content-center>
           <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
             <div text-center>
-              <h1>FINIXER.</h1>
-              <h3>Accede</h3>
+                <h1 style = "text-align: center; font-size: 20px;">.</h1>
+              <h1 style = "text-align: center; font-size: 60px;">FINIXER.</h1>
+              <h1 style = "text-align: center; font-size: 30px;">Accede</h1>
             </div>
             <div padding>
               <ion-item>
@@ -17,25 +18,18 @@
                 <ion-input formControlName="contrasena" type="password" placeholder="Contraseña" ngModel required></ion-input>
               </ion-item>
             </div>
-            <div class="centrado">
-             <div class="divButton">
-              <ion-button shape="round" size="large" type="submit" [disabled]="loginForm.invalid">Entrar</ion-button>
-            </div>
+            <div class="divButton">
+              <ion-button shape="round" size="large" type="submit" [disabled]="loginForm.invalid" expand="block">Entrar</ion-button>
             </div>
           </ion-col>
         </ion-row>
         <ion-row>
-            <ion-item text-center>
-                <ion-label>
-                    <div class="registroText" style="text-align: center;">
-                        Si no tienes una cuenta,<br>
-                        <a routerLink='/registrar'>registrate aquí</a>
-                    </div>
-                </ion-label>
-            </ion-item>       
+          <div class="registroText">
+            <h1> </h1>
+          </div>¿Aun no tienes cuenta?,, <br>
+          <a routerLink='/registrar'> ¡Registrate aquí!..</a>
         </ion-row>
       </ion-grid>
     </form>
   </ion-content>
-
 </ion-content>

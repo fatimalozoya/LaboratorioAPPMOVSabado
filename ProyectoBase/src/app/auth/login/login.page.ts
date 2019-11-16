@@ -39,9 +39,6 @@ export class LoginPage implements OnInit {
       value => {
         this.loginCorrecto();
       },
-      error => {
-        this.error(error.error.mensaje);
-      }
     );
 }
 
